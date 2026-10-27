@@ -329,40 +329,15 @@ main {
 
 .avatar-portrait.is-rendered .avatar { opacity: 0; }
 
-.avatar-portrait.css-blur .avatar {
-  -webkit-mask-image: linear-gradient(#000 48%, transparent 65%);
-  mask-image: linear-gradient(#000 48%, transparent 65%);
-}
-.avatar-blur-band {
+.avatar-render { display: none; }
+.avatar-progressive {
   position: absolute;
-  inset: 0 -40px;
+  left: -100.334448%;
+  top: -75.376884%;
+  width: 300.668896%;
+  height: 250.753768%;
   pointer-events: none;
-  -webkit-mask-image: var(--band-mask);
-  mask-image: var(--band-mask);
-}
-.avatar-blur-band img {
-  margin-left: 40px;
-  width: calc(100% - 80px);
-  height: 100%;
-  object-fit: cover;
-  filter: blur(var(--band-blur));
-}
-.avatar-blur-band:nth-of-type(1) {
-  --band-blur: 4px;
-  --band-mask: linear-gradient(transparent 48%, #000 65%, transparent 77%);
-}
-.avatar-blur-band:nth-of-type(2) {
-  --band-blur: 10px;
-  --band-mask: linear-gradient(transparent 65%, #000 77%, transparent 90%);
-}
-.avatar-blur-band:nth-of-type(3) {
-  --band-blur: 20px;
-  --band-mask: linear-gradient(transparent 77%, #000 90%, transparent 100%);
-}
-
-.avatar-render {
-  position: absolute;
-  pointer-events: none;
+  overflow: visible;
 }
 
 .identity-fact {
@@ -493,7 +468,7 @@ h1 {
   touch-action: pan-y pinch-zoom;
   --card-width: clamp(216px, 18.611111vw, 360px);
   --card-height: calc(var(--card-width) * 1.5);
-  --arc-radius: calc(var(--card-width) * 17.1);
+  --arc-radius: calc(var(--card-width) * 3.5);
   --angle-step: 4deg;
 
   position: relative;
@@ -516,6 +491,10 @@ h1 {
   transform-origin: 50% calc(var(--arc-radius) + var(--card-height) / 2);
   will-change: transform;
 }
+
+.collection { cursor: grab; user-select: none; -webkit-user-select: none; }
+.collection.is-dragging, .collection.is-dragging .work-card { cursor: grabbing; }
+.collection img { -webkit-user-drag: none; }
 
 .work-card {
   --card-corner: 14px;
@@ -1055,7 +1034,7 @@ h1 {
 
 </script>
     <script id="portfolio-app">
-window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"assets/5fc4dbae371af51ac2780930.webp","brand":"撇撇","avatar":"assets/55cc8419212b49fa8f53ee0f.webp","avatarAlt":"个人头像","mainTitle":"撇撇的作品集","aboutTitle":"about my works","role":"UI/UX DESIGNER","birthYear":"1998","base":"SHENZHEN","phone":"139-2845-3575","email":"195823236@qq.com","wechat":"Piepie_","backgroundImage":"assets/1cca0b11e0f1d592c7d1a29a.png"},"animation":{"autoSpeed":0.4061538461538462,"pointerGain":14.76923076923077},"projects":[{"id":"project-01","icon":"podium","title":"新出行排行榜","introduction":"从产品设计师角度，本次升级将丰富用户的浏览和查找等综合场景。","shortIntroduction":"从产品设计师角度，本次升级将丰富用户的浏览和查找等综合场景。","background":"#f4ff65","foreground":"#000000","image":"assets/f73f2b92187b5b4f0b79457d.webp","thumbnail":"assets/c6f9e7e8b3358084ac0e484e.webp","thumbnail2x":"assets/43c4d440f623d66a37a6343a.webp","backgroundImage":"assets/1e02840aa7873ba55c3a88fe.webp","imageAlt":"封面-排行榜.jpg","category":"TOC UI/UX","brand":"RANKING","cardTitle":["新出行排行榜","[App/H5/PC]"],"subtitle":"XCHUXING RANKING","details":[{"src":"assets/30ace743abf693728c035147.webp","width":2240,"height":10217,"alt":"排行榜 1.jpg"},{"src":"assets/8f2853ae38ab1d5838fce770.webp","width":2240,"height":9583,"alt":"排行榜 2.jpg"},{"src":"assets/0c4511a2ebb5f8dea18b8a90.webp","width":2240,"height":8920,"alt":"排行榜 3.jpg"}]},{"id":"project-02","icon":"bookmark-plus","title":"王牌栏目","introduction":"王牌栏目是由新出行倾心打造的内容合集，汇聚行业内最新的爆料、试驾、一图详解等类型内容并持续更新","shortIntroduction":"王牌栏目是由新出行倾心打造的内容合集，汇聚行业内最新的爆料、试驾、一图详解等类型内容并持续更新","background":"#f1c9a5","foreground":"#000000","image":"assets/f179d5e0a57b9fa22ee7153a.webp","thumbnail":"assets/82d3a18461280fa6fcf77dac.webp","thumbnail2x":"assets/e0cbcd8882a81a1e9346e97b.webp","backgroundImage":"assets/3b02361a73b5d1c5a6548278.webp","imageAlt":"封面-王牌栏目.jpg","category":"TOC UI/UX","brand":"Originals","cardTitle":["王牌栏目","[App/H5/PC]"],"subtitle":"Originals","details":[{"src":"assets/8503553a82742217b188a651.webp","width":2240,"height":14532,"alt":"王牌栏目.jpg"}]},{"id":"project-03","icon":"house-wifi","title":"天猫精灵智能面板","introduction":"从 0-1 搭建符合智能面板应用场景的中控界面。","shortIntroduction":"从 0-1 搭建符合智能面板应用场景的中控界面。","background":"#44cdff","foreground":"#000000","image":"assets/f4e3dcaf0f8316f3ef951870.webp","thumbnail":"assets/162a44b4079d16b2ffff0814.webp","thumbnail2x":"assets/7f9f517a4e1544c8ba388316.webp","backgroundImage":"assets/39d13cbb783903904b06681a.webp","imageAlt":"封面-tm.jpg","category":"TOC UI/UX","brand":"Genie AIoT","cardTitle":["Genie AIoT精灵生态面板","[智能面板]"],"subtitle":"Subtitle","details":[{"src":"assets/a292c8c30c2d1c547c3e2c08.webp","width":2240,"height":10080,"alt":"精灵生态-1.png"},{"src":"assets/a5e20b76acd68827f2d59b1d.webp","width":2240,"height":10080,"alt":"精灵生态-2.png"},{"src":"assets/c42307be95210efb11c88b46.webp","width":2240,"height":14389,"alt":"精灵生态-3.png"}]},{"id":"project-04","icon":"pencil-sparkles","title":"智能词典笔","introduction":"智能词典笔Q1是猫精的智能新品，由猫精提供底层服务能力，猫精UED负责主要页面输出及规范文档交付","shortIntroduction":"智能词典笔Q1是猫精的智能新品，由猫精提供底层服务能力，猫精UED负责主要页面输出及规范文档交付","background":"#c5cdd6","foreground":"#000000","image":"assets/77d20e537b259c50c4ef4038.webp","thumbnail":"assets/f57896991719dcd0c57e3516.webp","thumbnail2x":"assets/9a597fbb6821a6dfdbc3f153.webp","backgroundImage":"assets/3e63542356f50fc39abe69df.webp","imageAlt":"封面-词典笔.jpg","category":"TOC UI/UX","brand":"Smart Dictionary Pen","cardTitle":["智能词典笔Q1","[智能面板]"],"subtitle":"Smart Dictionary Pen","details":[{"src":"assets/c37d1d5c51b8d59f8dca8462.webp","width":2240,"height":3780,"alt":"词典笔.png"}]},{"id":"project-05","icon":"flower","title":"运营相关设计","introduction":"年度报告、PPT、LOGO、海报等\n平面运营相关设计展示","shortIntroduction":"年度报告、PPT、LOGO、海报等\n平面运营相关设计展示","background":"#ff5900","foreground":"#000000","image":"assets/7a1b7b5055b2d916ed7e6287.webp","thumbnail":"assets/35866caae6faad6dfc641645.webp","thumbnail2x":"assets/fa1404512c70ac1e508d3212.webp","backgroundImage":"assets/65834244990624c421eec99e.webp","imageAlt":"封面-年度报告.jpg","category":"BRANDING","brand":"Graphic Design","cardTitle":["运营相关设计","[平面设计]"],"subtitle":"Other Design","details":[{"src":"assets/43b7f998b5ade76121a1f363.webp","width":2240,"height":14219,"alt":"年度报告.jpg"},{"src":"assets/9cdd56baf7206746db9f74f9.webp","width":2240,"height":1260,"alt":"62@3x.png"},{"src":"assets/19ad58171f9c3811a2328f86.webp","width":2240,"height":5052,"alt":"logo.png"},{"src":"assets/cf64f9298e8234981fcb7ecb.webp","width":2240,"height":8714,"alt":"24平面.png"}]},{"id":"project-mvp1sq40-rc2p","icon":"chevrons-left-right-ellipsis","title":"可视化BI工具","introduction":"BI⼯具为满⾜⽤户⼤数据可视化需求⽽提供的⼀体化⼤数据系统，是⼀款便捷、安全且实时性⾼的SaaS数据分析平台。","shortIntroduction":"BI⼯具为满⾜⽤户⼤数据可视化需求⽽提供的⼀体化⼤数据系统，是⼀款便捷、安全且实时性⾼的SaaS数据分析平台。","background":"#002fbd","foreground":"#ffffff","image":"assets/14d0d9c35a39f14b09ab89f3.webp","thumbnail":"assets/49a89c4e52bb712c57328892.webp","thumbnail2x":"assets/b615fd66f3ed944ecd1e6d13.webp","backgroundImage":"assets/fd47c5b03a96b21a0ed66540.webp","imageAlt":"封面-bi.jpg","category":"TOC UI/UX","brand":"Visualization","cardTitle":["实时大数据可视化工具","[BI工具]"],"subtitle":"BI Tool","details":[{"src":"assets/06fb4798f93f2069664a869b.webp","width":2240,"height":5464,"alt":"1@2x.png"},{"src":"assets/13049422adcef2f3bbef4e9a.webp","width":2240,"height":3976,"alt":"2@2x.png"},{"src":"assets/524402f686bd5ff0a11f6350.webp","width":2240,"height":4643,"alt":"3@2x.png"},{"src":"assets/c3a944e3d66ea7aff6f0681e.webp","width":2240,"height":4505,"alt":"4@2x.png"}]},{"id":"project-mvp16kan-ngfd","icon":"monitor","title":"网页设计","introduction":"2019-2021年期间设计的网页设计项目\n包含华大基因、腾讯5G网页","shortIntroduction":"2019-2021年期间设计的网页设计项目\n包含华大基因、腾讯5G网页","background":"#dbdbdb","foreground":"#000000","image":"assets/25763f969b3ecf1eb153276b.webp","thumbnail":"assets/6efe99cb325d5005f29aa552.webp","thumbnail2x":"assets/c1e7b5a0225a7615112187ed.webp","backgroundImage":"assets/e6b158e5ce62a37ac4dad247.webp","imageAlt":"封面-web.jpg","category":"TOC UI/UX","brand":"Web Design","cardTitle":["网页设计","[PC]"],"subtitle":"Web Design","details":[{"src":"assets/3836a977d1f9c16aff8a29a0.webp","width":1920,"height":7321,"alt":"安全计算平台.png"},{"src":"assets/793ab72340f27c6876ec6893.webp","width":1920,"height":4988,"alt":"BeeHive.png"},{"src":"assets/728e87d440cde265674ea4c1.webp","width":1920,"height":7188,"alt":"BRCA标准数据库.png"},{"src":"assets/1d36abab15bf98f83824a0f4.webp","width":1280,"height":3459,"alt":"5-web.png"}]},{"id":"project-06","icon":"face-slightly-smiling","title":"表情包","introduction":"从日常喜怒哀乐到\n社区与业务内容角度拓展表情包丰富度","shortIntroduction":"从日常喜怒哀乐到\n社区与业务内容角度拓展表情包丰富度","background":"#fee989","foreground":"#000000","image":"assets/c4b17b5556db257ce2d5459f.webp","thumbnail":"assets/d22a9bbb89d3911e1f5f685c.webp","thumbnail2x":"assets/1a249213eed428b736203ef2.webp","backgroundImage":"assets/bd49f7c1f017db2fcbb8364d.webp","imageAlt":"封面-表情包.jpg","category":"BRANDING","brand":"Emoticons Design","cardTitle":["表情包 2.0","[Emoji]"],"subtitle":"Emoticons Design","details":[{"src":"assets/10a77927c276fa90fd17feb1.webp","width":1920,"height":7705,"alt":"表情包.jpg"}]}],"icons":{"sparkles":"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z M20 2v4 M22 4h-4 M6 20A2 2 0 1 0 2 20A2 2 0 1 0 6 20Z","podium":"M12 6V2h-1 M9 15a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1 M9 21V11a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v10","bookmark-plus":"M12 7v6 M15 10H9 M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z","house-wifi":"M9.5 13.866a4 4 0 0 1 5 .01 M12 17h.01 M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M7 10.754a8 8 0 0 1 10 0","pencil-sparkles":"M10 3H8 M15.007 5.008l3.987 3.986 M20 15v4 M21.174 6.813a2.82 2.82 0 0 0-3.986-3.987L3.842 16.175a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z M22 17h-4 M4 5v4 M6 7H2 M9 2v2","flower":"M15 12A3 3 0 1 0 9 12A3 3 0 1 0 15 12Z M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5 M12 7.5V9 M7.5 12H9 M16.5 12H15 M12 16.5V15 M8 8l1.88 1.88 M14.12 9.88 16 8 M8 16l1.88 -1.88 M14.12 14.12 16 16","chevrons-left-right-ellipsis":"M12 12h.01 M16 12h.01 M17 7l5 5 -5 5 M7 7l-5 5 5 5 M8 12h.01","monitor":"M4 3H20A2 2 0 0 1 22 5V15A2 2 0 0 1 20 17H4A2 2 0 0 1 2 15V5A2 2 0 0 1 4 3Z M8 21L16 21 M12 17L12 21","face-slightly-smiling":"M15 10V9 M16.472 15a6 6 0 01-8.943 0 M9 10V9 M22 12A10 10 0 1 0 2 12A10 10 0 1 0 22 12Z"}};
+window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"assets/5fc4dbae371af51ac2780930.webp","brand":"撇撇","avatar":"assets/55cc8419212b49fa8f53ee0f.webp","avatarAlt":"个人头像","mainTitle":"撇撇的作品集","aboutTitle":"about my works","role":"UI/UX DESIGNER","birthYear":"1998","base":"SHENZHEN","phone":"139-2845-3575","email":"195823236@qq.com","wechat":"Piepie_","backgroundImage":"assets/1cca0b11e0f1d592c7d1a29a.png"},"animation":{"autoSpeed":0.4061538461538462,"pointerGain":14.76923076923077},"projects":[{"id":"project-01","icon":"podium","title":"新出行排行榜","introduction":"从产品设计师角度，本次升级将丰富用户的浏览和查找等综合场景。","shortIntroduction":"从产品设计师角度，本次升级将丰富用户的浏览和查找等综合场景。","background":"#f4ff65","foreground":"#000000","image":"assets/80f1e3e7f98f5cddfaceb978.jpg","thumbnail":"assets/105cfb24e0e51ff4ee88b082.webp","thumbnail2x":"assets/830ffa78c631ed7f5ab00c03.webp","backgroundImage":"assets/4005affa468f3cc617b37857.webp","imageAlt":"封面-排行榜.jpg","category":"TOC UI/UX","brand":"RANKING","cardTitle":["新出行排行榜","[App/H5/PC]"],"subtitle":"XCHUXING RANKING","details":[{"src":"assets/30ace743abf693728c035147.webp","width":2240,"height":10217,"alt":"排行榜 1.jpg"},{"src":"assets/8f2853ae38ab1d5838fce770.webp","width":2240,"height":9583,"alt":"排行榜 2.jpg"},{"src":"assets/0c4511a2ebb5f8dea18b8a90.webp","width":2240,"height":8920,"alt":"排行榜 3.jpg"}]},{"id":"project-02","icon":"bookmark-plus","title":"王牌栏目","introduction":"王牌栏目是由新出行倾心打造的内容合集，汇聚行业内最新的爆料、试驾、一图详解等类型内容并持续更新","shortIntroduction":"王牌栏目是由新出行倾心打造的内容合集，汇聚行业内最新的爆料、试驾、一图详解等类型内容并持续更新","background":"#f1c9a5","foreground":"#000000","image":"assets/e39d4f5038df9e0ae51a1e0e.jpg","thumbnail":"assets/81efd321accf6d716e6c9b1b.webp","thumbnail2x":"assets/67cf6fc3e3bfed84a4c8fc25.webp","backgroundImage":"assets/fee444d983c396c0af9135bd.webp","imageAlt":"封面-王牌栏目.jpg","category":"TOC UI/UX","brand":"Originals","cardTitle":["王牌栏目","[App/H5/PC]"],"subtitle":"Originals","details":[{"src":"assets/8503553a82742217b188a651.webp","width":2240,"height":14532,"alt":"王牌栏目.jpg"}]},{"id":"project-03","icon":"house-wifi","title":"天猫精灵智能面板","introduction":"从 0-1 搭建符合智能面板应用场景的中控界面。","shortIntroduction":"从 0-1 搭建符合智能面板应用场景的中控界面。","background":"#44cdff","foreground":"#000000","image":"assets/f4e3dcaf0f8316f3ef951870.webp","thumbnail":"assets/162a44b4079d16b2ffff0814.webp","thumbnail2x":"assets/7f9f517a4e1544c8ba388316.webp","backgroundImage":"assets/39d13cbb783903904b06681a.webp","imageAlt":"封面-tm.jpg","category":"TOC UI/UX","brand":"Genie AIoT","cardTitle":["Genie AIoT精灵生态面板","[智能面板]"],"subtitle":"Subtitle","details":[{"src":"assets/a292c8c30c2d1c547c3e2c08.webp","width":2240,"height":10080,"alt":"精灵生态-1.png"},{"src":"assets/a5e20b76acd68827f2d59b1d.webp","width":2240,"height":10080,"alt":"精灵生态-2.png"},{"src":"assets/c42307be95210efb11c88b46.webp","width":2240,"height":14389,"alt":"精灵生态-3.png"}]},{"id":"project-04","icon":"pencil-sparkles","title":"智能词典笔","introduction":"智能词典笔Q1是猫精的智能新品，由猫精提供底层服务能力，猫精UED负责主要页面输出及规范文档交付","shortIntroduction":"智能词典笔Q1是猫精的智能新品，由猫精提供底层服务能力，猫精UED负责主要页面输出及规范文档交付","background":"#c5cdd6","foreground":"#000000","image":"assets/77d20e537b259c50c4ef4038.webp","thumbnail":"assets/f57896991719dcd0c57e3516.webp","thumbnail2x":"assets/9a597fbb6821a6dfdbc3f153.webp","backgroundImage":"assets/3e63542356f50fc39abe69df.webp","imageAlt":"封面-词典笔.jpg","category":"TOC UI/UX","brand":"Smart Dictionary Pen","cardTitle":["智能词典笔Q1","[智能面板]"],"subtitle":"Smart Dictionary Pen","details":[{"src":"assets/c37d1d5c51b8d59f8dca8462.webp","width":2240,"height":3780,"alt":"词典笔.png"}]},{"id":"project-05","icon":"flower","title":"运营相关设计","introduction":"年度报告、PPT、LOGO、海报等\n平面运营相关设计展示","shortIntroduction":"年度报告、PPT、LOGO、海报等\n平面运营相关设计展示","background":"#ff5900","foreground":"#000000","image":"assets/7a1b7b5055b2d916ed7e6287.webp","thumbnail":"assets/35866caae6faad6dfc641645.webp","thumbnail2x":"assets/fa1404512c70ac1e508d3212.webp","backgroundImage":"assets/65834244990624c421eec99e.webp","imageAlt":"封面-年度报告.jpg","category":"BRANDING","brand":"Graphic Design","cardTitle":["运营相关设计","[平面设计]"],"subtitle":"Other Design","details":[{"src":"assets/43b7f998b5ade76121a1f363.webp","width":2240,"height":14219,"alt":"年度报告.jpg"},{"src":"assets/9cdd56baf7206746db9f74f9.webp","width":2240,"height":1260,"alt":"62@3x.png"},{"src":"assets/19ad58171f9c3811a2328f86.webp","width":2240,"height":5052,"alt":"logo.png"},{"src":"assets/cf64f9298e8234981fcb7ecb.webp","width":2240,"height":8714,"alt":"24平面.png"}]},{"id":"project-mvp1sq40-rc2p","icon":"chevrons-left-right-ellipsis","title":"可视化BI工具","introduction":"BI⼯具为满⾜⽤户⼤数据可视化需求⽽提供的⼀体化⼤数据系统，是⼀款便捷、安全且实时性⾼的SaaS数据分析平台。","shortIntroduction":"BI⼯具为满⾜⽤户⼤数据可视化需求⽽提供的⼀体化⼤数据系统，是⼀款便捷、安全且实时性⾼的SaaS数据分析平台。","background":"#002fbd","foreground":"#ffffff","image":"assets/14d0d9c35a39f14b09ab89f3.webp","thumbnail":"assets/49a89c4e52bb712c57328892.webp","thumbnail2x":"assets/b615fd66f3ed944ecd1e6d13.webp","backgroundImage":"assets/fd47c5b03a96b21a0ed66540.webp","imageAlt":"封面-bi.jpg","category":"TOC UI/UX","brand":"Visualization","cardTitle":["实时大数据可视化工具","[BI工具]"],"subtitle":"BI Tool","details":[{"src":"assets/06fb4798f93f2069664a869b.webp","width":2240,"height":5464,"alt":"1@2x.png"},{"src":"assets/13049422adcef2f3bbef4e9a.webp","width":2240,"height":3976,"alt":"2@2x.png"},{"src":"assets/524402f686bd5ff0a11f6350.webp","width":2240,"height":4643,"alt":"3@2x.png"},{"src":"assets/c3a944e3d66ea7aff6f0681e.webp","width":2240,"height":4505,"alt":"4@2x.png"}]},{"id":"project-mvp16kan-ngfd","icon":"monitor","title":"网页设计","introduction":"2019-2021年期间设计的网页设计项目\n包含华大基因、腾讯5G网页","shortIntroduction":"2019-2021年期间设计的网页设计项目\n包含华大基因、腾讯5G网页","background":"#dbdbdb","foreground":"#000000","image":"assets/25763f969b3ecf1eb153276b.webp","thumbnail":"assets/6efe99cb325d5005f29aa552.webp","thumbnail2x":"assets/c1e7b5a0225a7615112187ed.webp","backgroundImage":"assets/e6b158e5ce62a37ac4dad247.webp","imageAlt":"封面-web.jpg","category":"TOC UI/UX","brand":"Web Design","cardTitle":["网页设计","[PC]"],"subtitle":"Web Design","details":[{"src":"assets/3836a977d1f9c16aff8a29a0.webp","width":1920,"height":7321,"alt":"安全计算平台.png"},{"src":"assets/793ab72340f27c6876ec6893.webp","width":1920,"height":4988,"alt":"BeeHive.png"},{"src":"assets/728e87d440cde265674ea4c1.webp","width":1920,"height":7188,"alt":"BRCA标准数据库.png"},{"src":"assets/1d36abab15bf98f83824a0f4.webp","width":1280,"height":3459,"alt":"5-web.png"}]},{"id":"project-06","icon":"face-slightly-smiling","title":"表情包","introduction":"从日常喜怒哀乐到\n社区与业务内容角度拓展表情包丰富度","shortIntroduction":"从日常喜怒哀乐到\n社区与业务内容角度拓展表情包丰富度","background":"#fee989","foreground":"#000000","image":"assets/a55f88f6512634af56ecfeff.jpg","thumbnail":"assets/fa0ed77c4e38421529a243ab.webp","thumbnail2x":"assets/287cbadec4100e8114aaf1ec.webp","backgroundImage":"assets/5066b9631719dab152f0c453.webp","imageAlt":"封面-表情包.jpg","category":"BRANDING","brand":"Emoticons Design","cardTitle":["表情包 2.0","[Emoji]"],"subtitle":"Emoticons Design","details":[{"src":"assets/10a77927c276fa90fd17feb1.webp","width":1920,"height":7705,"alt":"表情包.jpg"}]}],"icons":{"sparkles":"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z M20 2v4 M22 4h-4 M6 20A2 2 0 1 0 2 20A2 2 0 1 0 6 20Z","podium":"M12 6V2h-1 M9 15a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1 M9 21V11a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v10","bookmark-plus":"M12 7v6 M15 10H9 M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z","house-wifi":"M9.5 13.866a4 4 0 0 1 5 .01 M12 17h.01 M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M7 10.754a8 8 0 0 1 10 0","pencil-sparkles":"M10 3H8 M15.007 5.008l3.987 3.986 M20 15v4 M21.174 6.813a2.82 2.82 0 0 0-3.986-3.987L3.842 16.175a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z M22 17h-4 M4 5v4 M6 7H2 M9 2v2","flower":"M15 12A3 3 0 1 0 9 12A3 3 0 1 0 15 12Z M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5 M12 7.5V9 M7.5 12H9 M16.5 12H15 M12 16.5V15 M8 8l1.88 1.88 M14.12 9.88 16 8 M8 16l1.88 -1.88 M14.12 14.12 16 16","chevrons-left-right-ellipsis":"M12 12h.01 M16 12h.01 M17 7l5 5 -5 5 M7 7l-5 5 5 5 M8 12h.01","monitor":"M4 3H20A2 2 0 0 1 22 5V15A2 2 0 0 1 20 17H4A2 2 0 0 1 2 15V5A2 2 0 0 1 4 3Z M8 21L16 21 M12 17L12 21","face-slightly-smiling":"M15 10V9 M16.472 15a6 6 0 01-8.943 0 M9 10V9 M22 12A10 10 0 1 0 2 12A10 10 0 1 0 22 12Z"}};
 (() => {
  const c=window.__PORTFOLIO__, s=c.site;
  document.title=s.mainTitle+' | '+s.brand;
@@ -1128,9 +1107,9 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   // Animation and geometry configuration.
   const DEG = Math.PI / 180;
-  const STEP = 4;
-  const AUTO_SPEED = window.__PORTFOLIO__.animation.autoSpeed;
-  const MOUSE_SWEEP = window.__PORTFOLIO__.animation.pointerGain;
+  const STEP = 360 / (window.__PORTFOLIO__.projects.length * 2);
+  const AUTO_SPEED = 4;
+
   const HOVER_SCALE = 1.08;
   const HOVER_ANIMATION_SECONDS = 0.45;
   const EXPAND_SECONDS = 0.65;
@@ -1222,6 +1201,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   let lastTime = performance.now();
   let touchDrag = null;
   let touchVelocity = 0;
+  let galleryHover = false;
   let suppressTouchClickUntil = 0;
   let frameRequest = null;
   let layoutDirty = false;
@@ -1252,7 +1232,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   function needsNextFrame() {
     if (layoutDirty || presentationPending) return true;
     if (mode !== 'idle') return direction !== 0 || modalNeedsRender;
-    if (!reducedMotion.matches && !hoverActive && !touchDrag && AUTO_SPEED !== 0) return true;
+    if (!reducedMotion.matches && !hoverActive && !galleryHover && !touchDrag && AUTO_SPEED !== 0) return true;
     if (touchVelocity !== 0 || pointerAngle !== pointerTarget) return true;
     return items.some(item => {
       const targetAmount = hoverActive && item === hovered ? 1 : 0;
@@ -1262,106 +1242,43 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     });
   }
 
-  // Render spatially varying blur from the current image, never from a baked bitmap.
-  // Adjacent Gaussian levels crossfade in narrow bands between 50% and 85% height.
+  // One proportional Gaussian pipeline on desktop and mobile. Three-sigma
+  // padding lets the blur disappear before reaching its filter boundary.
   function bindAvatarBlur(portrait) {
     const image = portrait.querySelector('.avatar');
-    const output = portrait.querySelector('.avatar-render');
-    const source = document.createElement('canvas');
-    const band = document.createElement('canvas');
-    const context = output.getContext('2d');
-    const sourceContext = source.getContext('2d');
-    const bandContext = band.getContext('2d');
-    // iOS WebKit may lack Canvas 2D filters. CSS blur and masks also avoid
-    // rebuilding fifteen large canvas layers on mobile viewport changes.
-    if (window.matchMedia('(pointer: coarse), (max-width: 600px)').matches
-        || !bandContext || !('filter' in bandContext)) {
-      for (let level = 0; level < 3; level++) {
-        const band = document.createElement('div');
-        band.className = 'avatar-blur-band';
-        band.setAttribute('aria-hidden', 'true');
-        const copy = image.cloneNode(false);
-        copy.removeAttribute('class');
-        copy.alt = '';
-        band.append(copy);
-        portrait.append(band);
-      }
-      portrait.classList.add('css-blur');
-      output.hidden = true;
-      return;
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.classList.add('avatar-progressive');
+    svg.setAttribute('viewBox', '-300 -300 899 998');
+    svg.setAttribute('aria-hidden', 'true');
+    const defs = document.createElementNS(ns, 'defs');
+    svg.append(defs);
+    function element(tag, attrs, parent) {
+      const node = document.createElementNS(ns, tag);
+      Object.entries(attrs).forEach(([key,value]) => node.setAttribute(key, value));
+      parent.append(node);
+      return node;
     }
-    if (!context || !sourceContext || !bandContext) return;
-    let lastRender = '';
-    function render() {
-      if (!image.complete || !image.naturalWidth || !portrait.isConnected) return;
-      const width = portrait.clientWidth;
-      const height = portrait.clientHeight;
-      if (!width || !height) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const start = Number(portrait.dataset.blurStart);
-      const end = Number(portrait.dataset.blurEnd);
-      const radius = Number(portrait.dataset.blurMax);
-      const padding = radius;
-      const key = [image.currentSrc || image.src, width, height, dpr, start, end, radius].join('|');
-      if (key === lastRender) return;
-      const renderWidth = Math.ceil((width + padding * 2) * dpr);
-      const renderHeight = Math.ceil((height + padding * 2) * dpr);
-      for (const canvas of [output, source, band]) {
-        canvas.width = renderWidth;
-        canvas.height = renderHeight;
-      }
-      Object.assign(output.style, {
-        left: `${-padding}px`, top: `${-padding}px`,
-        width: `${width + padding * 2}px`, height: `${height + padding * 2}px`,
-      });
-      const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
-      const cropWidth = width / scale;
-      const cropHeight = height / scale;
-      sourceContext.drawImage(image,
-        (image.naturalWidth - cropWidth) / 2, (image.naturalHeight - cropHeight) / 2,
-        cropWidth, cropHeight, padding * dpr, padding * dpr, width * dpr, height * dpr);
-      const levels = 14;
-      const step = (end - start) / levels;
-      const y = fraction => (padding + fraction * height) * dpr / renderHeight;
-      context.globalCompositeOperation = 'lighter';
-      for (let level = 0; level <= levels; level += 1) {
-        bandContext.clearRect(0, 0, renderWidth, renderHeight);
-        bandContext.globalCompositeOperation = 'source-over';
-        bandContext.filter = level ? `blur(${radius * level / levels * dpr}px)` : 'none';
-        bandContext.drawImage(source, 0, 0);
-        bandContext.filter = 'none';
-        const mask = bandContext.createLinearGradient(0, 0, 0, renderHeight);
-        if (level === 0) {
-          mask.addColorStop(0, '#fff');
-          mask.addColorStop(y(start), '#fff');
-          mask.addColorStop(y(start + step), 'transparent');
-          mask.addColorStop(1, 'transparent');
-        } else if (level === levels) {
-          mask.addColorStop(0, 'transparent');
-          mask.addColorStop(y(end - step), 'transparent');
-          mask.addColorStop(y(end), '#fff');
-          mask.addColorStop(1, '#fff');
-        } else {
-          const center = start + step * level;
-          mask.addColorStop(0, 'transparent');
-          mask.addColorStop(y(center - step), 'transparent');
-          mask.addColorStop(y(center), '#fff');
-          mask.addColorStop(y(center + step), 'transparent');
-          mask.addColorStop(1, 'transparent');
-        }
-        bandContext.globalCompositeOperation = 'destination-in';
-        bandContext.fillStyle = mask;
-        bandContext.fillRect(0, 0, renderWidth, renderHeight);
-        context.drawImage(band, 0, 0);
-      }
-      context.globalCompositeOperation = 'source-over';
-      lastRender = key;
-      portrait.classList.add('is-rendered');
+    for (let level = 0; level <= 14; level++) {
+      const center = 0.5 + 0.35 * level / 14;
+      const step = 0.35 / 14;
+      const id = `portrait-band-${level}`;
+      const gradient = element('linearGradient', {id, gradientUnits:'userSpaceOnUse', x1:0, x2:0, y1:-300, y2:698}, defs);
+      const stop = (y, opacity) => element('stop', {offset:(y+300)/998, 'stop-color':'white', 'stop-opacity':opacity}, gradient);
+      stop(-300, level===0 ? 1 : 0);
+      if (level>0) stop((center-step)*398,0);
+      stop(center*398,1);
+      if (level<14) stop((center+step)*398,0);
+      stop(698, level===14 ? 1 : 0);
+      const mask = element('mask', {id:id+'-mask', maskUnits:'userSpaceOnUse', x:-300,y:-300,width:899,height:998},defs);
+      element('rect',{x:-300,y:-300,width:899,height:998,fill:`url(#${id})`},mask);
+      const filter=element('filter',{id:id+'-blur',filterUnits:'userSpaceOnUse',x:-300,y:-300,width:899,height:998,'color-interpolation-filters':'sRGB'},defs);
+      element('feGaussianBlur',{stdDeviation:100*level/14},filter);
+      const group=element('g',{mask:`url(#${id}-mask)`,style:'mix-blend-mode:plus-lighter'},svg);
+      element('image',{href:image.currentSrc||image.src,x:0,y:0,width:299,height:398,preserveAspectRatio:'xMidYMid slice',filter:`url(#${id}-blur)`},group);
     }
-    image.addEventListener('load', render);
-    image.addEventListener('error', () => portrait.classList.remove('is-rendered'));
-    new ResizeObserver(render).observe(portrait);
-    render();
+    portrait.append(svg);
+    portrait.classList.add('is-rendered');
   }
 
   // Header/background presentation, independent from the gallery geometry.
@@ -1541,7 +1458,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     button.innerHTML = cardMarkup(item.projectIndex);
     items.push(item);
     button.addEventListener('pointerenter', event => {
-      if (event.pointerType === 'mouse') setHovered(item);
+      if (event.pointerType === 'mouse' && !touchDrag) setHovered(item);
     });
     button.addEventListener('pointerleave', event => {
       if (event.pointerType === 'mouse' && hovered === item) setHovered(null);
@@ -1609,7 +1526,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     layout = {
       width: actualWidth,
       height: actualWidth * 1.5,
-      radius: Math.max(actualWidth * 17.1, innerHeight - rect.top + actualWidth),
+      radius: actualWidth * 3.5,
       corner: parseFloat(getComputedStyle(items[0].button).borderTopLeftRadius),
       top: rect.top + scrollY,
       centerX: rect.left + collection.clientWidth / 2,
@@ -1919,7 +1836,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
         pointerTarget += touchVelocity * (1 - decay) / 4.5;
         touchVelocity = reducedMotion.matches || Math.abs(touchVelocity * decay) < 0.02 ? 0 : touchVelocity * decay;
       }
-      if (!hoverActive && !touchDrag) {
+      if (!hoverActive && !galleryHover && !touchDrag) {
         if (!reducedMotion.matches) phase -= AUTO_SPEED * dt;
       }
       pointerAngle = approach(pointerAngle, pointerTarget, pointerSmoothing);
@@ -1949,6 +1866,11 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     if (projectHeader.style.opacity !== headerOpacity) projectHeader.style.opacity = headerOpacity;
 
     items.forEach(item => {
+      const visible = mode !== 'idle' || Math.abs(item.angle) < 85;
+      if (item.renderState.visible !== visible) {
+        item.slot.style.visibility = visible ? 'visible' : 'hidden';
+        item.renderState.visible = visible;
+      }
       const angle = item.angle * DEG;
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
@@ -2022,7 +1944,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   // Browser lifecycle and input wake the renderer on demand.
   // Touch dragging uses screen distance; vertical scrolling remains native.
   collection.addEventListener('pointerdown', event => {
-    if (event.pointerType === 'mouse' || !event.isPrimary || mode !== 'idle') return;
+    if (!event.isPrimary || mode !== 'idle' || (event.pointerType === 'mouse' && event.button !== 0)) return;
     suppressTouchClickUntil = 0;
     touchVelocity = 0;
     touchDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY,
@@ -2037,7 +1959,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     const dy = event.clientY - drag.startY;
     if (!drag.axis && Math.max(Math.abs(dx), Math.abs(dy)) >= 8) {
       drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-      if (drag.axis === 'x') collection.setPointerCapture(event.pointerId);
+      if (drag.axis === 'x') { collection.setPointerCapture(event.pointerId); collection.classList.add('is-dragging'); }
     }
     if (drag.axis !== 'x') return;
     // Positive angles move cards right, matching the finger's direction.
@@ -2061,6 +1983,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     touchVelocity = event.type === 'pointerup' && touchDrag.axis === 'x'
       && performance.now() - touchDrag.time < 100 && !reducedMotion.matches ? touchDrag.velocity : 0;
     touchDrag = null;
+    collection.classList.remove('is-dragging');
     pointerX = null;
     if (collection.hasPointerCapture(event.pointerId)) collection.releasePointerCapture(event.pointerId);
     requestRender();
@@ -2074,14 +1997,32 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
       event.stopImmediatePropagation();
     }
   }, true);
+  collection.addEventListener('dragstart', event => event.preventDefault());
+  collection.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse') return;
+    galleryHover = true;
+    touchVelocity = 0;
+    requestRender();
+  });
+  collection.addEventListener('pointerleave', event => {
+    if (event.pointerType !== 'mouse') return;
+    galleryHover = false;
+    if (!touchDrag) setHovered(null);
+    requestRender();
+  });
+  collection.addEventListener('wheel', event => {
+    if (mode !== 'idle' || event.ctrlKey) return;
+    event.preventDefault();
+    touchVelocity = 0;
+    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? collection.clientWidth : 1;
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    pointerTarget -= Math.max(-240, Math.min(240, delta * unit)) / layout.radius / DEG;
+    setHovered(null);
+    requestRender();
+  }, {passive:false});
   document.addEventListener('pointermove', event => {
-    const previousX = pointerX;
     pointerX = event.clientX;
     pointerY = event.clientY;
-    if (event.pointerType === 'mouse' && previousX !== null && mode === 'idle') {
-      pointerTarget -= (pointerX - previousX) / innerWidth * MOUSE_SWEEP;
-      requestRender();
-    }
   });
   document.documentElement.addEventListener('pointerleave', () => {
     pointerX = null;
