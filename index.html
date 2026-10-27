@@ -327,7 +327,7 @@ main {
   object-fit: cover;
 }
 
-.avatar-portrait.is-rendered .avatar { opacity: 0; }
+.avatar-portrait .avatar { opacity: 0; }
 
 .avatar-render { display: none; }
 .avatar-progressive {
@@ -488,7 +488,7 @@ h1 {
   width: var(--card-width);
   height: var(--card-height);
   transform: translateX(-50%) rotate(calc(var(--offset) * var(--angle-step)));
-  transform-origin: 50% calc(var(--arc-radius) + var(--card-height) / 2);
+  transform-origin: 50% 50%;
   will-change: transform;
 }
 
@@ -943,7 +943,7 @@ h1 {
             <div class="identity-face default-identity">
               <div class="avatar-portrait" data-figma-node="27:117" data-blur-start="0.5" data-blur-end="0.85" data-blur-max="100">
                 <img class="avatar" src="assets/55cc8419212b49fa8f53ee0f.webp" alt="个人头像" width="299" height="398" />
-                <canvas class="avatar-render" aria-hidden="true"></canvas>
+                <img class="avatar-progressive" src="assets/073f8bbf93cb455d7282df08.webp" width="1798" height="1996" alt="" aria-hidden="true" decoding="async" />
               </div>
               <div class="identity-fact identity-fact-role" data-default-only data-figma-node="27:144">UI/UX DESIGNER</div>
               <div class="identity-fact identity-fact-born" data-default-only data-figma-node="27:145">BORN IN<br />1998</div>
@@ -1240,45 +1240,6 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
         ? Math.sign(item.angle - hovered.angle) * layout.hoverPush : 0;
       return item.hoverAmount !== targetAmount || item.anglePush !== targetPush;
     });
-  }
-
-  // One proportional Gaussian pipeline on desktop and mobile. Three-sigma
-  // padding lets the blur disappear before reaching its filter boundary.
-  function bindAvatarBlur(portrait) {
-    const image = portrait.querySelector('.avatar');
-    const ns = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns, 'svg');
-    svg.classList.add('avatar-progressive');
-    svg.setAttribute('viewBox', '-300 -300 899 998');
-    svg.setAttribute('aria-hidden', 'true');
-    const defs = document.createElementNS(ns, 'defs');
-    svg.append(defs);
-    function element(tag, attrs, parent) {
-      const node = document.createElementNS(ns, tag);
-      Object.entries(attrs).forEach(([key,value]) => node.setAttribute(key, value));
-      parent.append(node);
-      return node;
-    }
-    for (let level = 0; level <= 14; level++) {
-      const center = 0.5 + 0.35 * level / 14;
-      const step = 0.35 / 14;
-      const id = `portrait-band-${level}`;
-      const gradient = element('linearGradient', {id, gradientUnits:'userSpaceOnUse', x1:0, x2:0, y1:-300, y2:698}, defs);
-      const stop = (y, opacity) => element('stop', {offset:(y+300)/998, 'stop-color':'white', 'stop-opacity':opacity}, gradient);
-      stop(-300, level===0 ? 1 : 0);
-      if (level>0) stop((center-step)*398,0);
-      stop(center*398,1);
-      if (level<14) stop((center+step)*398,0);
-      stop(698, level===14 ? 1 : 0);
-      const mask = element('mask', {id:id+'-mask', maskUnits:'userSpaceOnUse', x:-300,y:-300,width:899,height:998},defs);
-      element('rect',{x:-300,y:-300,width:899,height:998,fill:`url(#${id})`},mask);
-      const filter=element('filter',{id:id+'-blur',filterUnits:'userSpaceOnUse',x:-300,y:-300,width:899,height:998,'color-interpolation-filters':'sRGB'},defs);
-      element('feGaussianBlur',{stdDeviation:100*level/14},filter);
-      const group=element('g',{mask:`url(#${id}-mask)`,style:'mix-blend-mode:plus-lighter'},svg);
-      element('image',{href:image.currentSrc||image.src,x:0,y:0,width:299,height:398,preserveAspectRatio:'xMidYMid slice',filter:`url(#${id}-blur)`},group);
-    }
-    portrait.append(svg);
-    portrait.classList.add('is-rendered');
   }
 
   // Header/background presentation, independent from the gallery geometry.
@@ -1866,10 +1827,19 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
     if (projectHeader.style.opacity !== headerOpacity) projectHeader.style.opacity = headerOpacity;
 
     items.forEach(item => {
-      const visible = mode !== 'idle' || Math.abs(item.angle) < 85;
+      const projectedX = layout.radius * Math.sin(item.angle * DEG);
+      const projectedY = layout.radius * (1 - Math.cos(item.angle * DEG));
+      const visible = mode !== 'idle' || (Math.abs(item.angle) < 85
+        && Math.abs(projectedX) < innerWidth / 2 + layout.height
+        && layout.top - scrollY + projectedY < innerHeight + layout.height / 2);
       if (item.renderState.visible !== visible) {
         item.slot.style.visibility = visible ? 'visible' : 'hidden';
         item.renderState.visible = visible;
+      }
+      if (!visible) {
+        item.button.tabIndex = -1;
+        item.renderState.tabIndex = -1;
+        return;
       }
       const angle = item.angle * DEG;
       const cos = Math.cos(angle);
@@ -1901,7 +1871,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
       const tabIndex = Math.abs(centerX - innerWidth / 2) < innerWidth / 2 + layout.width / 2 ? 0 : -1;
       if (state.slotAngle !== slotAngle) {
         state.slotAngle = slotAngle;
-        item.slot.style.transform = `translateX(-50%) rotate(${slotAngle.toFixed(4)}deg)`;
+        item.slot.style.transform = `translate3d(calc(-50% + ${projectedX.toFixed(3)}px), ${projectedY.toFixed(3)}px, 0) rotate(${slotAngle.toFixed(4)}deg)`;
       }
       if (state.x !== x || state.y !== y || state.cardAngle !== cardAngle || state.scale !== scale) {
         state.x = x;
@@ -2051,7 +2021,7 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   // Initialize after the markup and vendor scripts are available.
   collection.querySelectorAll('.work-slot').forEach(register);
   buildPresentationLayers();
-  bindAvatarBlur(headerContent.querySelector('.avatar-portrait'));
+
   const headerObserver = new ResizeObserver(invalidateLayout);
   headerObserver.observe(projectHeader);
   measure();
