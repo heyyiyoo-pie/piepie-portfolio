@@ -1949,6 +1949,8 @@ window.__PORTFOLIO__={"schema":"phonebooth-portfolio/v3","site":{"brandLogo":"as
   });
   function finishTouchDrag(event) {
     if (!touchDrag || event.pointerId !== touchDrag.id) return;
+    // A card's implicit touch capture is released when the gallery takes over.
+    if (event.type === 'lostpointercapture' && event.target !== collection) return;
     if (touchDrag.axis) suppressTouchClickUntil = performance.now() + 700;
     touchVelocity = event.type === 'pointerup' && touchDrag.axis === 'x'
       && performance.now() - touchDrag.time < 100 && !reducedMotion.matches ? touchDrag.velocity : 0;
