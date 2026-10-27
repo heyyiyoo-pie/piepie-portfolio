@@ -508,7 +508,9 @@ h1 {
   border-radius: var(--card-corner);
   background: #fff;
   cursor: pointer;
-  touch-action: pan-y pinch-zoom;
+  /* Resolve gesture axes on the unrotated gallery, not each rotating card. */
+  touch-action: auto;
+  -webkit-touch-callout: none;
   will-change: transform;
   overflow: clip;
   color: #000;
